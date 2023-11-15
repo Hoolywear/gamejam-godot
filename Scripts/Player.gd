@@ -1,40 +1,19 @@
+# Character that moves and jumps.
+class_name Player
 extends KinematicBody2D
 
-export var speed := 100
-export var fall_speed = 100
-var velocity: Vector2
-var input_direction
+# Horizontal speed in pixels per second.
+export var speed := 500.0
+# Vertical acceleration in pixel per second squared.
+export var gravity := 3500.0
+# Vertical speed applied when jumping.
+export var jump_impulse := 1200.0
 
-var is_punching: bool = false
+var velocity
 
-func get_input():
-	input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = input_direction * speed
-
-func _physics_process(delta):
-
-	get_input()
-	
-	if not is_on_floor():
-		velocity.y = fall_speed
-	
-	if not is_punching:
-		move_and_slide(velocity)
-	
-	if Input.is_action_pressed("punch"):
-		is_punching = true
-	
-	set_animation()
+onready var fsm := $StateMachine
+onready var label := $Label
 
 
-#gestione animazioni
-func set_animation() -> void:
-	if input_direction.length() > 0 and not is_punching:
-		$AnimatedSprite.animation = "walk"
-		$AnimatedSprite.flip_h = input_direction.x < 0
-	elif is_punching:
-		$AnimatedSprite.animation = "punch"
-		yield($AnimatedSprite,"animation_finished")
-		is_punching = false
-	else:
-		$AnimatedSprite.animation = "idle"
+func _process(_delta: float) -> void:
+	label.text = fsm.state.name
