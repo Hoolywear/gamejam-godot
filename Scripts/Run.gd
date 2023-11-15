@@ -1,7 +1,7 @@
 extends PlayerState
 
 func enter(_msg := {}) -> void:
-	sprite.animation = "run"
+	player.sprite.animation = "run"
 
 func physics_update(delta: float) -> void:
 	if not player.is_on_floor():
@@ -13,7 +13,7 @@ func physics_update(delta: float) -> void:
 		- Input.get_action_strength("left")
 	)
 	
-	sprite.flip_h = input_direction_x < 0
+	player.update_direction()
 	
 	player.velocity.x = player.speed * input_direction_x
 	player.velocity.y += player.gravity * delta

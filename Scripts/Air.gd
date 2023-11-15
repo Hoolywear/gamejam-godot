@@ -2,9 +2,9 @@ extends PlayerState
 
 
 func enter(msg := {}) -> void:
+	player.sprite.animation = "jump"
 	if msg.has("do_jump"):
 		player.velocity.y = -player.jump_impulse
-		sprite.animation = "jump"
 
 
 func physics_update(delta: float) -> void:
@@ -15,6 +15,8 @@ func physics_update(delta: float) -> void:
 	player.velocity.x = player.speed * input_direction_x
 	player.velocity.y += player.gravity * delta
 	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
+
+	player.update_direction()
 
 	if player.is_on_floor():
 		if is_equal_approx(player.velocity.x, 0.0):

@@ -13,7 +13,14 @@ var velocity
 
 onready var fsm := $StateMachine
 onready var label := $Label
+onready var sprite := $AnimatedSprite
 
 
 func _process(_delta: float) -> void:
 	label.text = fsm.state.name
+
+func update_direction():
+	if (Input.is_action_pressed("left")):
+		sprite.flip_h = true
+	elif (Input.is_action_pressed("right")):
+		sprite.flip_h = false
