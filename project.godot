@@ -13,9 +13,27 @@ _global_script_classes=[ {
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
+<<<<<<< Updated upstream
 } ]
 _global_script_class_icons={
 "GitAPI": ""
+=======
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://Scripts/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://Scripts/StateMachine.gd"
+} ]
+_global_script_class_icons={
+"GitAPI": "",
+"State": "",
+"StateMachine": ""
+>>>>>>> Stashed changes
 }
 
 [application]
