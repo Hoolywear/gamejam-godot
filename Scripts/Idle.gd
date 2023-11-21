@@ -1,8 +1,11 @@
 extends PlayerState
 
+export (NodePath) var _animation_player
+onready var animation_player:AnimationPlayer = get_node(_animation_player)
+
 func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
-	player.sprite.animation = "idle"
+	animation_player.play("Idle")
 
 
 func physics_update(_delta: float) -> void:

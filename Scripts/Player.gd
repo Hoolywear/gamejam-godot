@@ -19,8 +19,15 @@ onready var sprite := $AnimatedSprite
 func _process(_delta: float) -> void:
 	label.text = fsm.state.name
 
-func update_direction():
+func get_direction():
+	var direction: float = (
+		Input.get_action_strength("right")
+		- Input.get_action_strength("left")
+	)
+	
 	if (Input.is_action_pressed("left")):
 		sprite.flip_h = true
 	elif (Input.is_action_pressed("right")):
 		sprite.flip_h = false
+	
+	return direction
