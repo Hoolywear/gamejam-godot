@@ -17,7 +17,7 @@ onready var sprite := $AnimatedSprite
 
 
 func _process(_delta: float) -> void:
-	label.text = fsm.state.name
+	label.text = fsm.state.name + " " + str(velocity.y)
 
 func get_direction():
 	var direction: float = (

@@ -4,9 +4,10 @@ export (NodePath) var _animation_player
 onready var animation_player:AnimationPlayer = get_node(_animation_player)
 
 func enter(msg := {}) -> void:
-	animation_player.play("Air")
 	if msg.has("do_jump"):
 		player.velocity.y = -player.jump_impulse
+		animation_player.seek(0.1)
+	animation_player.play("Air")
 
 
 func physics_update(delta: float) -> void:
@@ -23,3 +24,8 @@ func physics_update(delta: float) -> void:
 			state_machine.transition_to("Idle")
 		else:
 			state_machine.transition_to("Run")
+
+func reset_anim():
+	if player.velocity.y <= 0:
+		animation_player.stop()
+		animation_player.play("Air")

@@ -21,29 +21,34 @@ position = Vector2( 0, 1 )
 [node name="PBg" type="ParallaxBackground" parent="."]
 
 [node name="Bg1" type="ParallaxLayer" parent="PBg"]
-motion_scale = Vector2( 0, 1 )
-motion_mirroring = Vector2( 960, 0 )
+position = Vector2( 0, -240 )
+motion_scale = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1920, 0 )
 
 [node name="Sprite" type="Sprite" parent="PBg/Bg1"]
-scale = Vector2( 2.13333, 2.13333 )
+position = Vector2( -1066.67, -600 )
+scale = Vector2( 6.22222, 6.22222 )
 texture = ExtResource( 4 )
 centered = false
 
 [node name="bg2" type="ParallaxLayer" parent="PBg"]
-motion_scale = Vector2( 0.1, 1 )
-motion_mirroring = Vector2( 960, 0 )
+position = Vector2( 0, -240 )
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 3840, 0 )
 
 [node name="Sprite2" type="Sprite" parent="PBg/bg2"]
-scale = Vector2( 2.13333, 2.13333 )
+position = Vector2( -40, -665 )
+scale = Vector2( 8, 8 )
 texture = ExtResource( 5 )
 centered = false
 
 [node name="bg3" type="ParallaxLayer" parent="PBg"]
+position = Vector2( 0, -240 )
 motion_scale = Vector2( 0.2, 1 )
-motion_mirroring = Vector2( 960, 0 )
+motion_mirroring = Vector2( 1920, 0 )
 
 [node name="Sprite3" type="Sprite" parent="PBg/bg3"]
-scale = Vector2( 2.13333, 2.13333 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
 centered = false
 
@@ -72,12 +77,27 @@ texture = ExtResource( 1 )
 position = Vector2( -0.384445, -67.9547 )
 shape = SubResource( 4 )
 
+[node name="BOX2" type="StaticBody2D" parent="."]
+position = Vector2( 739, 388 )
+scale = Vector2( 32.5143, 2.1117 )
+
+[node name="Sprite" type="Sprite" parent="BOX2"]
+position = Vector2( -0.430573, -66.7709 )
+scale = Vector2( 0.0948898, 1 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOX2"]
+position = Vector2( -0.384445, -67.9547 )
+shape = SubResource( 4 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 448 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, -80 )
 current = true
+smoothing_enabled = true
+smoothing_speed = 10.0
 
 [node name="Borders" type="Node" parent="."]
 
